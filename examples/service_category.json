@@ -1,0 +1,30 @@
+{
+    "id": "SLICE_5G_001",
+    "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v4/serviceCategory/SLICE_5G_001",
+    "name": "Slice_5G",
+    "description": "5G Network Slices - All slice types",
+    "version": "1.0",
+    "validFor": {
+        "startDateTime": "2026-05-01T00:00:00Z",
+        "endDateTime": "2028-12-31T23:59:59Z"
+    },
+    "lastUpdate": "2026-05-07T10:00:00Z",
+    "lifecycleStatus": "Active",
+    "isRoot": true,
+    "serviceCandidate": [
+        {
+            "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v4/serviceCandidate/EMBB_001",
+            "id": "EMBB_001",
+            "name": "eMBB_StreamMax_Pro",
+            "version": "1.0",
+            "@referredType": "ServiceCandidate",
+            "@type": "ServiceCandidateRef",
+            "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Service/ServiceCandidateRef.schema.json",
+            "@baseType": ""
+        }
+    ],
+    "category": [],
+    "@type": "ServiceCategory",
+    "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Service/ServiceCategory.schema.json",
+    "@baseType": "Category"
+}

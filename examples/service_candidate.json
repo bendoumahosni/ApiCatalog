@@ -1,0 +1,38 @@
+{
+    "id": "EMBB_001",
+    "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v4/serviceCandidate/EMBB_001",
+    "name": "eMBB_StreamMax_Pro",
+    "description": "Enhanced Mobile Broadband - Service candidate for high data rate 5G slices",
+    "version": "1.0",
+    "validFor": {
+        "startDateTime": "2026-05-01T00:00:00Z",
+        "endDateTime": "2028-12-31T23:59:59Z"
+    },
+    "lastUpdate": "2026-05-07T10:00:00Z",
+    "lifecycleStatus": "Active",
+    "category": [
+        {
+            "id": "SLICE_5G_001",
+            "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v4/serviceCategory/SLICE_5G_001",
+            "version": "1.0",
+            "name": "Slice_5G",
+            "@referredType": "ServiceCategory",
+            "@type": "ServiceCategoryRef",
+            "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Service/ServiceCategoryRef.schema.json",
+            "@baseType": ""
+        }
+    ],
+    "serviceSpecification": {
+        "id": "cfss-embb-streammax-pro-4k-001",
+        "href": "https://mycsp.com:8080/tmf-api/serviceCatalogManagement/v4/serviceSpecification/cfss-embb-streammax-pro-4k-001",
+        "version": "1.0",
+        "name": "StreamMax_Pro_4K",
+        "@referredType": "CustomerFacingServiceSpecification",
+        "@type": "ServiceSpecificationRef",
+        "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Service/ServiceSpecificationRef.schema.json",
+        "@baseType": ""
+    },
+    "@type": "ServiceCandidate",
+    "@schemaLocation": "https://mycsp.com:8080/tmf-api/schema/Service/ServiceCandidate.schema.json",
+    "@baseType": ""
+}

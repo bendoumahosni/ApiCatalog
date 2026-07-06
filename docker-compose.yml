@@ -1,0 +1,37 @@
+# Production stack: API only, connected to an EXTERNAL GraphDB (your k8s
+# cluster / dedicated server). Configuration comes from a .env file (copy
+# .env.example -> .env and fill it in) so no secret or host is baked into the
+# image or this file.
+#
+#   cp .env.example .env        # then edit NFMUST_GRAPHDB_BASE_URL etc.
+#   docker compose -f docker-compose.prod.yml up -d --build
+#
+# Notes
+#   * env_file injects every NFMUST_* variable from .env into the container.
+#   * restart: unless-stopped keeps the API up across reboots/crashes.
+#   * The image already declares a HEALTHCHECK on /health.
+#   * Scale out with: docker compose -f docker-compose.prod.yml up -d --scale api=3
+#     If you do, run bootstrap once (NFMUST_BOOTSTRAP=true on a single run)
+#     then set NFMUST_BOOTSTRAP=false in .env so replicas don't race.
+services:
+  api:
+    build: .
+    image: nfmust-catalog-api:latest
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    # host.docker.internal lets the container reach a GraphDB exposed on the
+    # Docker host (e.g. a Docker Desktop Kubernetes service on localhost:7200).
+    # Harmless if NFMUST_GRAPHDB_BASE_URL points at an external IP instead.
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 1g
+        reservations:
+          cpus: "0.5"
+          memory: 512m

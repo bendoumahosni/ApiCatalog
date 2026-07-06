@@ -1,0 +1,2365 @@
+{
+  "id": "cfss-embb-streammax-pro-4k-001",
+  "href": "https://catalog.example.com/serviceSpecification/cfss-embb-streammax-pro-4k-001",
+  "name": "StreamMax_Pro_4K",
+  "description": "Slice eMBB haute definition pour plateformes de streaming video 4K/8K. Use case: operateur de contenu video live et VOD dans des stades et arenes.",
+  "version": "1.0.0",
+  "isBundle": false,
+  "lifecycleStatus": "Active",
+  "lastUpdate": "2026-02-18T00:00:00Z",
+  "attachment": [],
+  "relatedParty": [
+  ],
+  "constraint": [
+  ],
+  "@baseType": "",
+  "resourceSpecification": [],
+  "serviceLevelSpecification": [
+  ],
+  "serviceSpecCharacteristic": [
+    {
+      "name": "Availability",
+      "configurable": true,
+      "description": "Availability for StreamMax Pro 4K: High (95-99.999%)",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "FLOAT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "openClosed",
+          "regex": null,
+          "unitOfMeasure": "percent",
+          "valueFrom": 95,
+          "valueTo": 99.999,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": "High",
+            "alias": "High availability"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Area of Service",
+      "configurable": true,
+      "description": "Country of service delivery",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "SET",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "FR",
+            "alias": "France - ISO 3166-1 Alpha-2"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Area of Service: Region specification",
+      "configurable": true,
+      "description": "Specific stadium and arena regions",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "SET",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "Regions",
+            "alias": "Local Region - Stades et arenes"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Area of Service: Minimum altitude",
+      "configurable": true,
+      "description": "Minimum altitude for service coverage",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "m",
+          "valueFrom": 0,
+          "valueTo": 500,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": 0,
+            "alias": "Ground level"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Delay tolerance",
+      "configurable": true,
+      "description": "Not supported - video live requires real-time delivery",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "BINARY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "Not supported"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Deterministic communication: Availabilty",
+      "configurable": false,
+      "description": "Not required for eMBB streaming use case",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "BINARY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "Not supported"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Deterministic communication: Periodicity",
+      "configurable": false,
+      "description": "Not applicable - deterministic comm not supported",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "ARRAY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": null,
+            "alias": "Not applicable"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Downlink throughput per network slice: Guaranteed downlink throughput quota",
+      "configurable": false,
+      "description": "Guaranteed DL: 5 Gbps for streaming floor",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 5000000,
+          "valueTo": 5000000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": 5000000,
+            "alias": "5 Gbps guaranteed DL quota"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Downlink throughput per network slice: Maximum downlink throughput",
+      "configurable": false,
+      "description": "Maximum DL: 20 Gbps aggregate for stadium",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 20000000,
+          "valueTo": 20000000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": 20000000,
+            "alias": "20 Gbps max DL"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Downlink maximum throughput per UE: Maximum downlink throughput per UE value",
+      "configurable": false,
+      "description": "1 Gbps per UE for 4K/8K streaming",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 1000000,
+          "valueTo": 1000000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": 1000000,
+            "alias": "1 Gbps per UE (4K/8K)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Downlink maximum throughput per UE: Service category",
+      "configurable": false,
+      "description": "Video streaming",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "TEXT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "Video Streaming 4K/8K",
+            "alias": "Video Streaming 4K/8K"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Energy efficiency: Network slice energy efficiency KPI",
+      "configurable": false,
+      "description": "Energy efficiency monitoring supported",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "1",
+            "alias": "Supported"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Group communication support",
+      "configurable": false,
+      "description": "Broadcast for live events",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "ENUM",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "2",
+            "alias": "Broadcast/Multicast"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Isolation level: Isolation",
+      "configurable": false,
+      "description": "Logical isolation for stadium slice",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "ENUM",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "2",
+            "alias": "Logical Isolation"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Isolation level: Physical Isolation",
+      "configurable": false,
+      "description": "N/A - logical isolation selected",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "ENUM",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "Process and threads Isolation"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Isolation level: Logical Isolation",
+      "configurable": false,
+      "description": "Tenant isolation for streaming operator",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "ENUM",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "3",
+            "alias": "Tenant/Service isolation"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Maximum supported packet size",
+      "configurable": false,
+      "description": "Large packets for video payloads",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "Bytes",
+          "valueFrom": 9000,
+          "valueTo": 9000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": 9000,
+            "alias": "9000 bytes - jumbo frames for video"
+          }
+        }
+      ]
+    },
+    {
+      "name": "MMTel support",
+      "configurable": false,
+      "description": "Not required for streaming",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "BINARY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "Not supported"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Network functions owned by Network Slice Customer",
+      "configurable": false,
+      "description": "No customer-owned NFs",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "SET",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": " ",
+            "alias": "None"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Maximum number of PDU sessions",
+      "configurable": false,
+      "description": "60000 PDU sessions for stadium",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "PDU sessions",
+          "valueFrom": 60000,
+          "valueTo": 60000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": 60000,
+            "alias": "60000 PDU sessions"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Maximum number of PDU sessions: EPS counting required",
+      "configurable": false,
+      "description": "No EPS",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "BINARY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "no"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Maximum number of PDU sessions: LBO PDU Sessions Counting required",
+      "configurable": false,
+      "description": "No LBO",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "BINARY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "no"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Maximum number of UEs",
+      "configurable": false,
+      "description": "50000 UEs for stadium capacity",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "UEs",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": 50000,
+            "alias": "50000 UEs - stadium capacity"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Maximum number of UEs: EPS counting required",
+      "configurable": false,
+      "description": "No EPS",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "BINARY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "no"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Maximum number of UEs: Roaming UEs Counting required",
+      "configurable": false,
+      "description": "No roaming count",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "BINARY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "no"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Performance monitoring: Availability",
+      "configurable": false,
+      "description": "Throughput and latency monitoring",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "SET",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "Throughput,Latency",
+            "alias": "Throughput and Latency KPIs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Performance monitoring: Monitoring sample frequency",
+      "configurable": false,
+      "description": "Per minute monitoring",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "2",
+            "alias": "per minute"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Performance prediction: Availability",
+      "configurable": false,
+      "description": "Throughput prediction",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "ARRAY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "1",
+            "alias": "Throughput"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Performance prediction: Prediction frequency",
+      "configurable": false,
+      "description": "Per minute prediction",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "2",
+            "alias": "per minute"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Positioning support: Availability",
+      "configurable": false,
+      "description": "CID positioning for stadium zones",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "ARRAY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "1",
+            "alias": "CID-CID (LTE and NR)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Positioning support: Prediction frequency",
+      "configurable": false,
+      "description": "Per minute",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "2",
+            "alias": "per minute"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Positioning support: Accuracy",
+      "configurable": false,
+      "description": "10m accuracy sufficient for stadium zones",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "FLOAT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "meter",
+          "valueFrom": 10.0,
+          "valueTo": 10.0,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": 10.0,
+            "alias": "10 meter accuracy"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Radio spectrum",
+      "configurable": false,
+      "description": "NR n78 (3.5GHz) for capacity in stadium",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "ARRAY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "n78",
+            "alias": "NR Band n78 - 3.5 GHz TDD"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Monitoring and analytics",
+      "configurable": true,
+      "description": "Active investigation for real-time event monitoring",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "2",
+            "alias": "active investigation"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Session and Service Continuity support",
+      "configurable": false,
+      "description": "SSC mode 1 - fixed audience",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "ARRAY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "1",
+            "alias": "SSC mode 1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Simultaneous use of the network slice",
+      "configurable": false,
+      "description": "Can be used with any slice",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "1",
+            "alias": "Can be used simultaneously with any network slice"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Simultaneous use of the network slice: Service category",
+      "configurable": false,
+      "description": "Video Streaming",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "TEXT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "Video Streaming",
+            "alias": "Video Streaming"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Slice quality of service: 3GPP 5QI",
+      "configurable": false,
+      "description": "5QI 6 - Video Buffered Streaming TCP",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "ARRAY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "6",
+            "alias": "Video (Buffered Streaming) TCP-based"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Slice quality of service: Resource Type",
+      "configurable": false,
+      "description": "GBR - guaranteed bitrate for streaming",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "GBR (Mission Critical Video user plane)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Slice quality of service: Priority Level",
+      "configurable": false,
+      "description": "Priority 30 - high priority video",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": 30,
+          "valueTo": 30,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": 30,
+            "alias": "Priority 30 - high priority"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Slice quality of service parameters: Packet Delay Budget",
+      "configurable": false,
+      "description": "300ms PDB for buffered streaming",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "FLOAT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "Second",
+          "valueFrom": 0.3,
+          "valueTo": 0.3,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": 0.3,
+            "alias": "300ms PDB"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Slice quality of service parameters: Packet Error Rate",
+      "configurable": false,
+      "description": "PER 1e-3 for video streaming",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "FLOAT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": 0.001,
+          "valueTo": 0.001,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": 0.001,
+            "alias": "PER 1e-3"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Slice quality of service: Maximum Data Burst Volume",
+      "configurable": false,
+      "description": "20000 bytes for video burst",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "Bytes",
+          "valueFrom": 20000,
+          "valueTo": 20000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": 20000,
+            "alias": "20000 bytes max burst"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Slice quality of service: Maximum Packet Loss Rate",
+      "configurable": false,
+      "description": "1% max packet loss",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "FLOAT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "Percentage",
+          "valueFrom": 1.0,
+          "valueTo": 1.0,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": 1.0,
+            "alias": "1% max packet loss"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Supported device velocity",
+      "configurable": false,
+      "description": "Stationary - seated audience",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "ENUM",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "Kilometres per hour (km/h)",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "1",
+            "alias": "Stationary: 0 km/h"
+          }
+        }
+      ]
+    },
+    {
+      "name": "UE density",
+      "configurable": false,
+      "description": "50000 devices/km2 - stadium density",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "devices per km2",
+          "valueFrom": 50000,
+          "valueTo": 50000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": 50000,
+            "alias": "50000 devices/km2 - stadium"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Uplink throughput per network slice: Guaranteed uplink throughput quota",
+      "configurable": false,
+      "description": "500 Mbps guaranteed UL for reactions/chat",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 500000,
+          "valueTo": 500000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": 500000,
+            "alias": "500 Mbps guaranteed UL"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Uplink throughput per network slice: Maximum uplink throughput",
+      "configurable": false,
+      "description": "2 Gbps max UL aggregate",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 2000000,
+          "valueTo": 2000000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": 2000000,
+            "alias": "2 Gbps max UL"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Uplink maximum throughput per UE: Maximum Uplink Throughput per UE value",
+      "configurable": false,
+      "description": "100 Mbps per UE UL",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 100000,
+          "valueTo": 100000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": 100000,
+            "alias": "100 Mbps per UE UL"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Uplink maximum throughput per UE: Service category",
+      "configurable": false,
+      "description": "Social media and reactions",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "TEXT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "Social Media Upload",
+            "alias": "Social Media Upload"
+          }
+        }
+      ]
+    },
+    {
+      "name": "User management openness",
+      "configurable": false,
+      "description": "Not supported",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "BINARY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "not supported"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Data network access: Data access per data network",
+      "configurable": false,
+      "description": "Direct internet - CDN access",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "ARRAY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "Direct internet access"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Data network access: Tunnelling mechanism",
+      "configurable": false,
+      "description": "VPN Tunnel for streaming",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "ARRAY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "2",
+            "alias": "VPN Tunnel"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Latency from (last) UPF to Application Server",
+      "configurable": false,
+      "description": "10ms UPF to CDN AS - local MEC",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "FLOAT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "second",
+          "valueFrom": 0.01,
+          "valueTo": 0.01,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": 0.01,
+            "alias": "10ms - local MEC deployment"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Network Slice Specific Authentication and Authorization (NSSAA) Required",
+      "configurable": false,
+      "description": "Not required",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "BINARY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "Not supported"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Multimedia Priority Service",
+      "configurable": false,
+      "description": "Non-MPS",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "BINARY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "Non-MPS"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Multimedia Priority Service: Multimedia Priority Service capability support",
+      "configurable": false,
+      "description": "User prioritization",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "BINARY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "User prioritization"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Multimedia Priority Service: Multimedia Priority Service support",
+      "configurable": false,
+      "description": "MPS for Data",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "ARRAY",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "2",
+            "alias": "MPS for Data"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Supported data network: Supported data network list",
+      "configurable": false,
+      "description": "CDN Network",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "SET",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "CDN-StreamMax",
+            "alias": "CDN StreamMax Network"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Supported data network: Service category",
+      "configurable": false,
+      "description": "Video CDN",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "TEXT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "N/A",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "TEXT",
+          "validFor": null,
+          "value": {
+            "value": "Video CDN",
+            "alias": "Video CDN"
+          }
+        }
+      ]
+    }
+  ],
+  "serviceSpecRelationship": [
+
+  ],
+  "targetServiceSchema": null
+}

@@ -1,0 +1,18 @@
+{
+  "id": "String",
+  "href": "String",
+  "name": "String",
+  "description": "String",
+  "version": "1.0.0",
+  "isBundle": false,
+  "@type": "ServiceManagementProfile",
+  "lifecycleStatus": "String",
+  "lastUpdate": "XXXX-XX-XXTXX:XX:XXZ",
+  "attachment": [],
+  "relatedParty": [],
+  "resourceSpecification": [],
+  "serviceLevelSpecification": [],
+  "serviceSpecCharacteristic": [],
+  "serviceSpecRelationship": [],
+  "targetServiceSchema": null
+}

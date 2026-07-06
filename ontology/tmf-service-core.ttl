@@ -1,0 +1,880 @@
+@prefix : <http://vocab.nfmust.ie/tmf-service-core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix tmf: <http://vocab.nfmust.ie/tmf-service-core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://vocab.nfmust.ie/tmf-service-core#> .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://vocab.nfmust.ie/tmf-service-core#bundles
+tmf:bundles rdf:type owl:ObjectProperty ;
+            rdfs:domain tmf:ServiceSpecification ;
+            rdfs:range tmf:ServiceSpecification ;
+            rdfs:comment "Aggregation/packaging: a spec bundles other specs."@en ;
+            rdfs:label "bundles"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#contains
+tmf:contains rdf:type owl:ObjectProperty ;
+             rdfs:domain tmf:Category ;
+             rdfs:range tmf:ServiceCandidate ;
+             rdfs:comment "Explicit link between the catalog and its candidates."@en ;
+             rdfs:label "contains"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#dependsOn
+tmf:dependsOn rdf:type owl:ObjectProperty ,
+                       owl:TransitiveProperty ;
+              rdfs:domain tmf:RFS ;
+              rdfs:range tmf:RFS ;
+              rdfs:comment "Technical dependency between RFSs (declared transitive)."@en ;
+              rdfs:label "dependsOn"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#exposes
+tmf:exposes rdf:type owl:ObjectProperty ;
+            rdfs:domain tmf:ServiceCandidate ;
+            rdfs:range tmf:ServiceSpecification ;
+            rdfs:comment "A candidate exposes a service specification (TMF633 main link)."@en ;
+            rdfs:label "exposes"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasCategory
+tmf:hasCategory rdf:type owl:ObjectProperty ;
+                rdfs:domain tmf:ServiceCandidate ;
+                rdfs:range tmf:Category ;
+                rdfs:comment "A candidate is classified into one or more categories."@en ;
+                rdfs:label "hasCategory"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasCharacteristic
+tmf:hasCharacteristic rdf:type owl:ObjectProperty ;
+                      rdfs:domain tmf:ServiceSpecification ;
+                      rdfs:range tmf:CharacteristicSpecification ;
+                      rdfs:comment "Links a service specification to its characteristics."@en ;
+                      rdfs:label "hasCharacteristic"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasCharacteristicValue
+tmf:hasCharacteristicValue rdf:type owl:ObjectProperty ;
+                           rdfs:domain tmf:CharacteristicSpecification ;
+                           rdfs:range tmf:ServiceSpecCharacteristicValue ;
+                           rdfs:comment "Links a characteristic to its values (including default)."@en ;
+                           rdfs:label "hasCharacteristicValue"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasConstraint
+tmf:hasConstraint rdf:type owl:ObjectProperty ;
+                  rdfs:domain tmf:ServiceSpecification ;
+                  rdfs:range tmf:Constraint ;
+                  rdfs:comment "Optional: Attaches a constraint to a servicespec, characteristic."@en ;
+                  rdfs:label "hasConstraint"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasConstraintExpression
+tmf:hasConstraintExpression rdf:type owl:ObjectProperty ;
+                            rdfs:domain tmf:Constraint ;
+                            rdfs:range tmf:ConstraintExpression ;
+                            rdfs:comment "Links a constraint to its structured, machine-interpretable expression."@en ;
+                            rdfs:label "hasConstraintExpression"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasFeatureSpecification
+tmf:hasFeatureSpecification rdf:type owl:ObjectProperty ;
+                            rdfs:domain tmf:ServiceSpecification ;
+                            rdfs:range tmf:FeatureSpecification ;
+                            rdfs:comment "Optional: use only if your use cases require explicit feature modeling."@en ;
+                            rdfs:label "hasFeatureSpecification"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasManagementConstraint
+tmf:hasManagementConstraint rdf:type owl:ObjectProperty ;
+                            rdfs:domain tmf:ServiceManagementProfile ;
+                            rdfs:range tmf:ManagementConstraint ;
+                            rdfs:comment "Relates a service management profile to an operational condition or prerequisite that must be satisfied before or during lifecycle management."@en ;
+                            rdfs:label "has management constraint"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasManagementProfile
+tmf:hasManagementProfile rdf:type owl:ObjectProperty ;
+                         rdfs:domain tmf:RFS ;
+                         rdfs:range tmf:ServiceManagementProfile ;
+                         rdfs:comment "Relates a service specification, typically an RFSS, to the service management profile that describes the minimal operational knowledge required to manage its lifecycle."@en ;
+                         rdfs:label "has management profile"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasRelatedParty
+tmf:hasRelatedParty rdf:type owl:ObjectProperty ;
+                    rdfs:domain tmf:ServiceCatalog ,
+                                tmf:ServiceSpecification ;
+                    rdfs:range tmf:RelatedParty ;
+                    rdfs:comment "Links a catalog to its related parties (owner, maintainer, partner, ...)."@en ;
+                    rdfs:label "hasRelatedParty"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasResourceSpecRelationship
+tmf:hasResourceSpecRelationship rdf:type owl:ObjectProperty ;
+                                rdfs:domain tmf:ResourceSpecification ;
+                                rdfs:range tmf:ResourceSpecRelationship ;
+                                rdfs:comment "Links a resource specification to a reified relationship with another resource specification."@en ;
+                                rdfs:label "hasResourceSpecRelationship"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasServiceLevelConsequence
+tmf:hasServiceLevelConsequence rdf:type owl:ObjectProperty ;
+                               rdfs:domain tmf:ServiceLevelObjective ;
+                               rdfs:range tmf:ServiceLevelSpecConsequence ;
+                               rdfs:comment "Links a service level objective to the consequence or prescribed action applied when the objective is violated."@en ;
+                               rdfs:label "hasServiceLevelConsequence"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasServiceLevelObjective
+tmf:hasServiceLevelObjective rdf:type owl:ObjectProperty ;
+                             rdfs:domain tmf:ServiceLevelSpecification ;
+                             rdfs:range tmf:ServiceLevelObjective ;
+                             rdfs:comment "Links a service level specification to the objectives that define its measurable service-level commitments."@en ;
+                             rdfs:label "hasServiceLevelObjective"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasServiceLevelParameter
+tmf:hasServiceLevelParameter rdf:type owl:ObjectProperty ;
+                             rdfs:domain tmf:ServiceLevelObjective ;
+                             rdfs:range tmf:ServiceLevelSpecParameter ;
+                             rdfs:comment "Links a service level objective to the parameter measured or evaluated by that objective."@en ;
+                             rdfs:label "hasServiceLevelParameter"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasServiceLevelSpecification
+tmf:hasServiceLevelSpecification rdf:type owl:ObjectProperty ;
+                                 rdfs:domain tmf:ServiceSpecification ;
+                                 rdfs:range tmf:ServiceLevelSpecification ;
+                                 rdfs:comment "Optional: attach SLS/SLA/SLO information to a specification."@en ;
+                                 rdfs:label "hasServiceLevelSpecification"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasServiceSpecRelationship
+tmf:hasServiceSpecRelationship rdf:type owl:ObjectProperty ;
+                               rdfs:domain tmf:ServiceSpecification ;
+                               rdfs:range tmf:ServiceSpecRelationship ;
+                               rdfs:comment "Links a service specification to a reified relationship with another service specification."@en ;
+                               rdfs:label "hasServiceSpecRelationship"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#hasSubCategory
+tmf:hasSubCategory rdf:type owl:ObjectProperty ,
+                            owl:TransitiveProperty ;
+                   rdfs:domain tmf:Category ;
+                   rdfs:range tmf:Category ;
+                   rdfs:comment "Hierarchy relation between categories (declared transitive)."@en ;
+                   rdfs:label "hasSubCategory"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#isRealizedBy
+tmf:isRealizedBy rdf:type owl:ObjectProperty ;
+                 rdfs:domain tmf:ConcreteCFSS ;
+                 rdfs:range tmf:RFS ;
+                 rdfs:comment "Implementation relation: ConcreteCFSS is realized by one or more RFSSs."@en ;
+                 rdfs:label "isRealizedBy"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#organizedInto
+tmf:organizedInto rdf:type owl:ObjectProperty ;
+                  rdfs:domain tmf:ServiceCatalog ;
+                  rdfs:range tmf:Category ;
+                  rdfs:comment "A catalog is organized into categories"@en ;
+                  rdfs:label "organizedInto"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#relatedToEntity
+tmf:relatedToEntity rdf:type owl:ObjectProperty ;
+                    rdfs:domain tmf:ServiceLevelSpecParameter ;
+                    rdfs:range tmf:RelatedEntity ;
+                    rdfs:comment "Links a service level parameter to the entity to which the parameter applies."@en ;
+                    rdfs:label "relatedToEntity"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#requireResourceSpecification
+tmf:requireResourceSpecification rdf:type owl:ObjectProperty ;
+                                 rdfs:domain tmf:RFS ;
+                                 rdfs:range tmf:ResourceSpecification ;
+                                 rdfs:comment "Links a resource-facing service specification to the resource specification required for its realization."@en ;
+                                 rdfs:label "requireResourceSpecification"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#requires
+tmf:requires rdf:type owl:ObjectProperty ,
+                      owl:TransitiveProperty ;
+             rdfs:domain tmf:CFSS ;
+             rdfs:range tmf:CFSS ;
+             rdfs:comment "Functional dependency between CFSs"@en ;
+             rdfs:label "requires"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#requiresArtifact
+tmf:requiresArtifact rdf:type owl:ObjectProperty ;
+                     rdfs:domain tmf:ServiceManagementProfile ;
+                     rdfs:range tmf:DeploymentArtifact ;
+                     rdfs:comment "Relates a service management profile to an implementation artifact required to instantiate, deploy, configure, or manage the service."@en ;
+                     rdfs:label "requires artifact"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#specializes
+tmf:specializes rdf:type owl:ObjectProperty ;
+                rdfs:domain tmf:ConcreteCFSS ;
+                rdfs:range tmf:GenericCFSS ;
+                rdfs:comment "Concrete specification (concrete CFSS) specializes a more generic specification (Genric CFSS)" ;
+                rdfs:label "specializes" .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#supportsLifecycleOperation
+tmf:supportsLifecycleOperation rdf:type owl:ObjectProperty ;
+                               rdfs:domain tmf:ServiceManagementProfile ;
+                               rdfs:range tmf:LifecycleOperation ;
+                               rdfs:comment "Relates a service management profile to a lifecycle operation supported for the managed service."@en ;
+                               rdfs:label "hasLifecycleOperation"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#targetResourceSpecification
+tmf:targetResourceSpecification rdf:type owl:ObjectProperty ;
+                                rdfs:domain tmf:ResourceSpecRelationship ;
+                                rdfs:range tmf:ResourceSpecification ;
+                                rdfs:comment "Identifies the target resource specification of a reified resource specification relationship. The source is the resource specification that has the relationship."@en ;
+                                rdfs:label "targetResourceSpecification"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#targetServiceSpecification
+tmf:targetServiceSpecification rdf:type owl:ObjectProperty ;
+                               rdfs:domain tmf:ServiceSpecRelationship ;
+                               rdfs:range tmf:ServiceSpecification ;
+                               rdfs:comment "Identifies the target service specification of a reified service specification relationship. The source is the service specification that has the relationship."@en ;
+                               rdfs:label "targetServiceSpecification"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#usesManagementInterface
+tmf:usesManagementInterface rdf:type owl:ObjectProperty ;
+                            rdfs:domain tmf:ServiceManagementProfile ;
+                            rdfs:range tmf:ManagementInterface ;
+                            rdfs:comment "Relates a service management profile to the interface used to invoke lifecycle management operations."@en ;
+                            rdfs:label "hasManagement interface"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#validFor
+tmf:validFor rdf:type owl:ObjectProperty ;
+             rdfs:range tmf:TimePeriod .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://vocab.nfmust.ie/tmf-service-core#artifactFormat
+tmf:artifactFormat rdf:type owl:DatatypeProperty ;
+                   rdfs:domain tmf:DeploymentArtifact ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Specifies the technical format of an implementation artifact, such as YAML, JSON, XML, HCL, ZIP, CSAR, or script."@en ;
+                   rdfs:label "artifact format"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#artifactName
+tmf:artifactName rdf:type owl:DatatypeProperty ;
+                 rdfs:domain tmf:DeploymentArtifact ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Specifies the name of an implementation artifact required for lifecycle management."@en ;
+                 rdfs:label "artifact name"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#artifactType
+tmf:artifactType rdf:type owl:DatatypeProperty ;
+                 rdfs:domain tmf:DeploymentArtifact ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Specifies the type of implementation artifact, such as NSD, VNFD, TOSCA template, Helm chart, Terraform module, Ansible playbook, Kubernetes manifest"@en ;
+                 rdfs:label "artifact type"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#configurable
+tmf:configurable rdf:type owl:DatatypeProperty ;
+                 rdfs:domain tmf:CharacteristicSpecification ;
+                 rdfs:range xsd:boolean ;
+                 rdfs:label "configurable"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#conformanceComparator
+tmf:conformanceComparator rdf:type owl:DatatypeProperty ;
+                          rdfs:domain tmf:ServiceLevelObjective ;
+                          rdfs:range xsd:string ;
+                          rdfs:comment "Comparison operator used to evaluate whether the conformance target is satisfied, for example <=, >=, <, or >."@en ;
+                          rdfs:label "conformanceComparator"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#conformancePeriod
+tmf:conformancePeriod rdf:type owl:DatatypeProperty ;
+                      rdfs:domain tmf:ServiceLevelObjective ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "Measurement or evaluation period over which conformance is assessed."@en ;
+                      rdfs:label "conformancePeriod"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#conformanceTarget
+tmf:conformanceTarget rdf:type owl:DatatypeProperty ;
+                      rdfs:domain tmf:ServiceLevelObjective ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "Target value that the service level objective must satisfy."@en ;
+                      rdfs:label "conformanceTarget"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#constraintExpression
+tmf:constraintExpression rdf:type owl:DatatypeProperty ;
+                         rdfs:domain tmf:ManagementConstraint ;
+                         rdfs:range xsd:string ;
+                         rdfs:comment "Provides a textual or formal expression of an operational constraint or prerequisite that must be satisfied before or during lifecycle management."@en ;
+                         rdfs:label "constraint expression"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#constraintType
+tmf:constraintType rdf:type owl:DatatypeProperty ;
+                   rdfs:domain tmf:ManagementConstraint ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Specifies the type of management constraint, such as artifact onboarding constraint, interface compatibility constraint, operation ordering constraint, credential constraint, configuration prerequisite, or required service state constraint."@en ;
+                   rdfs:label "constraint type"@en ,
+                              "constraintType"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#description
+tmf:description rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string ;
+                rdfs:label "description"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#endDateTime
+tmf:endDateTime rdf:type owl:DatatypeProperty ;
+                rdfs:domain tmf:TimePeriod ;
+                rdfs:range xsd:dateTime ;
+                rdfs:comment "Specifies the date and time at which the time period ends."@en ;
+                rdfs:label "end date time"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#entityId
+tmf:entityId rdf:type owl:DatatypeProperty ;
+             rdfs:domain tmf:RelatedEntity ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Identifier of the related entity."@en ;
+             rdfs:label "entityId"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#entityType
+tmf:entityType rdf:type owl:DatatypeProperty ;
+               rdfs:domain tmf:RelatedEntity ;
+               rdfs:range xsd:string ;
+               rdfs:comment "Type of the related entity, such as ServiceSpecification, ResourceSpecification, Service, or Resource."@en ;
+               rdfs:label "entityType"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#expression
+tmf:expression rdf:type owl:DatatypeProperty ;
+               rdfs:domain tmf:Constraint ;
+               rdfs:range xsd:string ;
+               rdfs:label "expression"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#expressionUnit
+tmf:expressionUnit rdf:type owl:DatatypeProperty ;
+                   rdfs:domain tmf:ConstraintExpression ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Unit of measure associated with the right-hand value of a constraint expression, when applicable."@en ;
+                   rdfs:label "expressionUnit"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#extensible
+tmf:extensible rdf:type owl:DatatypeProperty ;
+               rdfs:domain tmf:CharacteristicSpecification ;
+               rdfs:range xsd:boolean ;
+               rdfs:label "extensible"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#graceTimes
+tmf:graceTimes rdf:type owl:DatatypeProperty ;
+               rdfs:domain tmf:ServiceLevelObjective ;
+               rdfs:range xsd:nonNegativeInteger ;
+               rdfs:comment "Number of tolerated non-conformance occurrences before considering the objective violated."@en ;
+               rdfs:label "graceTimes"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#href
+tmf:href rdf:type owl:DatatypeProperty ;
+         rdfs:range xsd:anyURI ;
+         rdfs:label "href"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#id
+tmf:id rdf:type owl:DatatypeProperty ;
+       rdfs:range xsd:string ;
+       rdfs:label "id"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#interfaceEndpoint
+tmf:interfaceEndpoint rdf:type owl:DatatypeProperty ;
+                      rdfs:domain tmf:ManagementInterface ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "Specifies the endpoint, base URL, tool reference, or access point used to interact with the management interface."@en ;
+                      rdfs:label "interface endpoint"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#interfaceName
+tmf:interfaceName rdf:type owl:DatatypeProperty ;
+                  rdfs:domain tmf:ManagementInterface ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "Specifies the name of the management interface, tool, endpoint, or platform used to invoke lifecycle operations."@en ;
+                  rdfs:label "interface name"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#interfaceSpecification
+tmf:interfaceSpecification rdf:type owl:DatatypeProperty ;
+                           rdfs:domain tmf:ManagementInterface ;
+                           rdfs:range xsd:string ;
+                           rdfs:comment "Specifies a reference to the interface specification or documentation, such as an OpenAPI document, CLI documentation, SDK documentation, orchestrator API documentation, or portal usage documentation."@en ;
+                           rdfs:label "interface specification"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#interfaceType
+tmf:interfaceType rdf:type owl:DatatypeProperty ;
+                  rdfs:domain tmf:ManagementInterface ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "Specifies the type of management interface, such as REST API, CLI, SDK,  Kubernetes API, Terraform CLI, Helm CLI, or NFV MANO API."@en ;
+                  rdfs:label "interface type"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#isBundle
+tmf:isBundle rdf:type owl:DatatypeProperty ;
+             rdfs:domain tmf:ServiceSpecification ;
+             rdfs:range xsd:boolean ;
+             rdfs:label "isBundle"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#isDefault
+tmf:isDefault rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:boolean ;
+              rdfs:label "isDefault"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#isUnique
+tmf:isUnique rdf:type owl:DatatypeProperty ;
+             rdfs:domain tmf:CharacteristicSpecification ;
+             rdfs:range xsd:boolean ;
+             rdfs:label "isUnique"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#leftOperand
+tmf:leftOperand rdf:type owl:DatatypeProperty ;
+                rdfs:domain tmf:ConstraintExpression ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Left-hand operand of a structured constraint expression, such as latency, availability, or region."@en ;
+                rdfs:label "leftOperand"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#lifecycleStatus
+tmf:lifecycleStatus rdf:type owl:DatatypeProperty ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "lifecycleStatus"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#logicalOperator
+tmf:logicalOperator rdf:type owl:DatatypeProperty ;
+                    rdfs:domain tmf:ConstraintExpression ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "Logical connector used when the expression represents a composite condition, for example AND or OR."@en ;
+                    rdfs:label "logicalOperator"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#maxCardinality
+tmf:maxCardinality rdf:type owl:DatatypeProperty ;
+                   rdfs:domain tmf:CharacteristicSpecification ;
+                   rdfs:range xsd:nonNegativeInteger ;
+                   rdfs:label "maxCardinality"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#minCardinality
+tmf:minCardinality rdf:type owl:DatatypeProperty ;
+                   rdfs:domain tmf:CharacteristicSpecification ;
+                   rdfs:range xsd:nonNegativeInteger ;
+                   rdfs:label "minCardinality"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#name
+tmf:name rdf:type owl:DatatypeProperty ;
+         rdfs:range xsd:string ;
+         rdfs:label "name"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#operationName
+tmf:operationName rdf:type owl:DatatypeProperty ;
+                  rdfs:domain tmf:LifecycleOperation ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "Specifies the name of a lifecycle operation, such as onboard, instantiate, deploy, configure, monitor, scale, update, or terminate."@en ;
+                  rdfs:label "operation name"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#operator
+tmf:operator rdf:type owl:DatatypeProperty ;
+             rdfs:domain tmf:ConstraintExpression ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Operator used in a structured constraint expression, such as =, !=, <=, >=, in, or notIn."@en ;
+             rdfs:label "operator"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#parameterType
+tmf:parameterType rdf:type owl:DatatypeProperty ;
+                  rdfs:domain tmf:ServiceLevelSpecParameter ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "Indicates the type of service level parameter, for example KPI or KQI."@en ;
+                  rdfs:label "parameterType"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#prescribedAction
+tmf:prescribedAction rdf:type owl:DatatypeProperty ;
+                     rdfs:domain tmf:ServiceLevelSpecConsequence ;
+                     rdfs:range xsd:string ;
+                     rdfs:comment "Recommended action, remedy, or consequence to apply when a service level objective is violated."@en ;
+                     rdfs:label "prescribedAction"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#rangeInterval
+tmf:rangeInterval rdf:type owl:DatatypeProperty ;
+                  rdfs:domain tmf:ServiceSpecCharacteristicValue ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "rangeInterval"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#regex
+tmf:regex rdf:type owl:DatatypeProperty ;
+          rdfs:range xsd:string ;
+          rdfs:label "regex"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#relationshipType
+tmf:relationshipType rdf:type owl:DatatypeProperty ;
+                     rdfs:range xsd:string ;
+                     rdfs:label "relationshipType"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#resourceStatus
+tmf:resourceStatus rdf:type owl:DatatypeProperty ;
+                   rdfs:domain tmf:Resource ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Operational or lifecycle status of a resource."@en ;
+                   rdfs:label "resourceStatus"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#rightOperandValue
+tmf:rightOperandValue rdf:type owl:DatatypeProperty ;
+                      rdfs:domain tmf:ConstraintExpression ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "Right-hand value of a structured constraint expression."@en ;
+                      rdfs:label "rightOperandValue"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#role
+tmf:role rdf:type owl:DatatypeProperty ;
+         rdfs:range xsd:string ;
+         rdfs:label "role"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#serviceParmCategory
+tmf:serviceParmCategory rdf:type owl:DatatypeProperty ;
+                        rdfs:domain tmf:ServiceLevelSpecParameter ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "Classifies the service level parameter, for example technology-specific, service-specific, or technology/service-independent."@en ;
+                        rdfs:label "serviceParmCategory"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#serviceParmPerspective
+tmf:serviceParmPerspective rdf:type owl:DatatypeProperty ;
+                           rdfs:domain tmf:ServiceLevelSpecParameter ;
+                           rdfs:range xsd:string ;
+                           rdfs:comment "Indicates the perspective of the parameter, for example single-user-instance or aggregated measurement."@en ;
+                           rdfs:label "serviceParmPerspective"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#startDateTime
+tmf:startDateTime rdf:type owl:DatatypeProperty ;
+                  rdfs:domain tmf:TimePeriod ;
+                  rdfs:range xsd:dateTime ;
+                  rdfs:comment "Specifies the date and time from which the time period starts."@en ;
+                  rdfs:label "start date time"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#tag
+tmf:tag rdf:type owl:DatatypeProperty ;
+        rdfs:domain tmf:CharacteristicSpecification ;
+        rdfs:range xsd:string .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#thresholdTarget
+tmf:thresholdTarget rdf:type owl:DatatypeProperty ;
+                    rdfs:domain tmf:ServiceLevelObjective ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "Warning threshold indicating that the objective is at risk of being violated."@en ;
+                    rdfs:label "thresholdTarget"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#tolerancePeriod
+tmf:tolerancePeriod rdf:type owl:DatatypeProperty ;
+                    rdfs:domain tmf:ServiceLevelObjective ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "Allowed time variation or grace period related to conformance evaluation."@en ;
+                    rdfs:label "tolerancePeriod"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#toleranceTarget
+tmf:toleranceTarget rdf:type owl:DatatypeProperty ;
+                    rdfs:domain tmf:ServiceLevelObjective ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "Allowed variation around the conformance target."@en ;
+                    rdfs:label "toleranceTarget"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#transformationAlgorithmOfKQI
+tmf:transformationAlgorithmOfKQI rdf:type owl:DatatypeProperty ;
+                                 rdfs:domain tmf:ServiceLevelSpecParameter ;
+                                 rdfs:range xsd:string ;
+                                 rdfs:comment "Describes how a KQI is derived or transformed from lower-level measurements, when applicable."@en ;
+                                 rdfs:label "transformationAlgorithmOfKQI"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#unitOfMeasure
+tmf:unitOfMeasure rdf:type owl:DatatypeProperty ;
+                  rdfs:domain tmf:ServiceSpecCharacteristicValue ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "unitOfMeasure"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#value
+tmf:value rdf:type owl:DatatypeProperty ;
+          rdfs:domain tmf:Constraint ,
+                      tmf:ServiceSpecCharacteristicValue ;
+          rdfs:range xsd:string .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#valueAlias
+tmf:valueAlias rdf:type owl:DatatypeProperty ;
+               rdfs:domain tmf:CharacteristicSpecification ;
+               rdfs:range xsd:string ;
+               rdfs:label "valueAlias"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#valueFrom
+tmf:valueFrom rdf:type owl:DatatypeProperty ;
+              rdfs:domain tmf:ServiceSpecCharacteristicValue ;
+              rdfs:range xsd:decimal ;
+              rdfs:label "valueFrom"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#valueTo
+tmf:valueTo rdf:type owl:DatatypeProperty ;
+            rdfs:domain tmf:ServiceSpecCharacteristicValue ;
+            rdfs:range xsd:decimal ;
+            rdfs:label "valueTo"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#valueType
+tmf:valueType rdf:type owl:DatatypeProperty ;
+              rdfs:domain tmf:ServiceSpecCharacteristicValue ;
+              rdfs:range xsd:string ;
+              rdfs:label "valueType"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://vocab.nfmust.ie/tmf-service-core#CFSS
+tmf:CFSS rdf:type owl:Class ;
+         rdfs:subClassOf tmf:ServiceSpecification ;
+         rdfs:comment "Customer-Facing Service specification."@en ;
+         rdfs:label "CFSS"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#Category
+tmf:Category rdf:type owl:Class ;
+             rdfs:comment "Logical/hierarchical container to organize service candidates."@en ;
+             rdfs:label "Category"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#CharacteristicSpecification
+tmf:CharacteristicSpecification rdf:type owl:Class ;
+                                rdfs:comment "Characteristic/attribute of a ServiceSpecification"@en ;
+                                rdfs:label "CharacteristicSpecification"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ConcreteCFSS
+tmf:ConcreteCFSS rdf:type owl:Class ;
+                 rdfs:subClassOf tmf:CFSS ;
+                 rdfs:comment "Represents a provider-specific customer-facing service specification that specializes a generic customer-facing service specification by defining fixed or selectable characteristic values, associated pricing or commercial conditions, and links to the resource-facing service specifications required for its realization ."@en ;
+                 rdfs:label "ConcreteCFSS" .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#Constraint
+tmf:Constraint rdf:type owl:Class ;
+               rdfs:comment "constraint applied to a service specification: it  represents a policy/rule applied to an entity or entity spec."@en ;
+               rdfs:label "Constraint"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ConstraintExpression
+tmf:ConstraintExpression rdf:type owl:Class ;
+                         rdfs:comment "Structured representation of a constraint expression using operands, operators, values, units, and optional logical connectors."@en ;
+                         rdfs:label "ConstraintExpression"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#DeploymentArtifact
+tmf:DeploymentArtifact rdf:type owl:Class ;
+                       rdfs:comment "Represents the type of artifact required to instantiate, (deploy) a  service, such as an NSD file, VNFD file, TOSCA template, Helm chart, Terraform module, Ansible playbook, Kubernetes manifest"@en ;
+                       rdfs:label "DeploymentArtifact"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#FeatureSpecification
+tmf:FeatureSpecification rdf:type owl:Class ;
+                         rdfs:comment "Optional: feature specification (enable only if needed)."@en ;
+                         rdfs:label "FeatureSpecification"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#FeatureSpecificationValue
+tmf:FeatureSpecificationValue rdf:type owl:Class ;
+                              rdfs:comment "Optional: feature specification value (often unnecessary if using characteristics + values)."@en ;
+                              rdfs:label "FeatureSpecificationValue"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#GenericCFSS
+tmf:GenericCFSS rdf:type owl:Class ;
+                rdfs:subClassOf tmf:CFSS ;
+                rdfs:comment "Represents a provider-agnostic customer-facing service specification that defines the admissible characteristics, allowable value ranges, and structural dependencies  with other service specifications. It is not directly orderable and does not include provider-specific pricing information."@en ;
+                rdfs:label "GenericCFSS" .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#LifecycleOperation
+tmf:LifecycleOperation rdf:type owl:Class ;
+                       rdfs:comment "Represents a lifecycle operation that can be performed on a service, such as onboard, instantiate, deploy, configure, monitor, scale, update, heal, suspend, resume, terminate, or delete."@en ;
+                       rdfs:label "Lifecycle Operation"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ManagementConstraint
+tmf:ManagementConstraint rdf:type owl:Class ;
+                         rdfs:comment "Represents an operational condition or prerequisite that must be satisfied before or during a lifecycle management operation, such as artifact onboarding, interface compatibility,required credentials, existing namespace."@en ;
+                         rdfs:label "Management Constraint"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ManagementInterface
+tmf:ManagementInterface rdf:type owl:Class ;
+                        rdfs:comment "Represents the interface, tool, endpoint, or platform through which an end-to-end orchestrator can invoke lifecycle management operations, such as a REST API, CLI, SDK, Kubernetes API, Terraform CLI, Helm CLI, or NFV MANO API."@en ;
+                        rdfs:label "Management Interface"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#RFS
+tmf:RFS rdf:type owl:Class ;
+        rdfs:subClassOf tmf:ServiceSpecification ;
+        rdfs:comment "Resource-Facing (technical) Service specification."@en ;
+        rdfs:label "RFSS"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#RelatedEntity
+tmf:RelatedEntity rdf:type owl:Class ;
+                  rdfs:comment "Represents an entity related to a service level parameter, such as the service, resource, or monitored object to which the parameter applies."@en ;
+                  rdfs:label "RelatedEntity"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#RelatedParty
+tmf:RelatedParty rdf:type owl:Class ;
+                 rdfs:comment "Represents a party associated with a service catalog or a service specification, with a role such as  provider, partner ."@en ;
+                 rdfs:label "RelatedParty"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#Resource
+tmf:Resource rdf:type owl:Class ;
+             rdfs:comment "Represents an instantiated or manageable resource used to realize services."@en ;
+             rdfs:label "Resource"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ResourceSpecRelationship
+tmf:ResourceSpecRelationship rdf:type owl:Class ;
+                             rdfs:comment "Represents a reified relationship between resource specifications, preserving relationship-specific metadata such as type, role, and validity period."@en ;
+                             rdfs:label "ResourceSpecRelationship"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ResourceSpecification
+tmf:ResourceSpecification rdf:type owl:Class ;
+                          rdfs:comment "is an abstract base class for representing a generic means for implementing a particular type of Resource. In essence, a ResourceSpecification defines the common attributes and relationships of a set of related Resources, while Resource defines a specific instance that is based on a particular ResourceSpecification"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ServiceCandidate
+tmf:ServiceCandidate rdf:type owl:Class ;
+                     rdfs:comment "A service candidate exposed in a catalog."@en ;
+                     rdfs:label "ServiceCandidate"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ServiceCatalog
+tmf:ServiceCatalog rdf:type owl:Class ;
+                   rdfs:comment "Represents a service catalog."@en ;
+                   rdfs:label "ServiceCatalog"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ServiceLevelObjective
+tmf:ServiceLevelObjective rdf:type owl:Class ;
+                          rdfs:comment "Defines an objective in terms of parameters, metrics, thresholds, and tolerances."@en ;
+                          rdfs:label "ServiceLevelObjective"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ServiceLevelSpecConsequence
+tmf:ServiceLevelSpecConsequence rdf:type owl:Class ;
+                                rdfs:comment "Defines the consequence or prescribed action associated with the violation of a service level objective."@en ;
+                                rdfs:label "ServiceLevelSpecConsequence"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ServiceLevelSpecParameter
+tmf:ServiceLevelSpecParameter rdf:type owl:Class ;
+                              rdfs:comment "Defines a parameter used by a service level objective. A parameter can be one of two types:Key Quality Indicator (KQI) or Key Performance Indicator (KPI)"@en ;
+                              rdfs:label "ServiceLevelSpecParameter"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ServiceLevelSpecification
+tmf:ServiceLevelSpecification rdf:type owl:Class ;
+                              rdfs:comment "represents a pre-defined or negotiated set of Service Level Objectives. Service Level Agreements are expressed in terms of Service Level Specifications."@en ;
+                              rdfs:label "ServiceLevelSpecification"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ServiceManagementProfile
+tmf:ServiceManagementProfile rdf:type owl:Class ;
+                             rdfs:comment "Captures the minimal operational knowledge required by an end-to-end orchestrator to manage a service lifecycle, including supported lifecycle operations, the management interface to use, required deployment artifacts, and operational constraints."@en ;
+                             rdfs:label "Service Management Profile"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ServiceSpecCharacteristicValue
+tmf:ServiceSpecCharacteristicValue rdf:type owl:Class ;
+                                   rdfs:comment "specification of a value (number or text or an object) that can be assigned to a Characteristic."@en ;
+                                   rdfs:label "ServiceSpecCharValue"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ServiceSpecRelationship
+tmf:ServiceSpecRelationship rdf:type owl:Class ;
+                            rdfs:comment "Represents a reified relationship between or among service specifications, such as a dependency, substitution, or exclusivity relationship."@en ;
+                            rdfs:label "ServiceSpecRelationship"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#ServiceSpecification
+tmf:ServiceSpecification rdf:type owl:Class ;
+                         rdfs:comment "ServiceSpecification is a class that offers characteristics to describe a type of service. Functionally, it acts as a template by which Services may be instantiated."@en ;
+                         rdfs:label "ServiceSpecification"@en .
+
+
+###  http://vocab.nfmust.ie/tmf-service-core#TimePeriod
+tmf:TimePeriod rdf:type owl:Class ;
+               rdfs:comment "Represents a validity period defined by a start date-time and an end date-time."@en ;
+               rdfs:label "Time Period"@en .
+
+
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

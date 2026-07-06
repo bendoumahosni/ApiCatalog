@@ -1,0 +1,26 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rep: <http://www.openrdf.org/config/repository#> .
+@prefix sr: <http://www.openrdf.org/config/repository/sail#> .
+@prefix sail: <http://www.openrdf.org/config/sail#> .
+@prefix graphdb: <http://www.ontotext.com/config/graphdb#> .
+
+# Repository config used by scripts/bootstrap.py. ${REPO_ID} is substituted.
+# - ruleset "rdfsplus-optimized" gives subclass/subproperty + property
+#   characteristics reasoning (enough for ConcreteCFSS rdfs:subClassOf CFSS and
+#   the transitive dependsOn/hasSubCategory).
+# - enable-context-index = true is important: this API stores every instance in
+#   its own named graph, and the context index keeps GRAPH-scoped queries fast.
+[] a rep:Repository ;
+   rep:repositoryID "${REPO_ID}" ;
+   rdfs:label "NF-MUST ${REPO_ID}" ;
+   rep:repositoryImpl [
+       rep:repositoryType "graphdb:SailRepository" ;
+       sr:sailImpl [
+           sail:sailType "graphdb:Sail" ;
+           graphdb:base-URL "http://vocab.nfmust.ie/tmf-service-core#" ;
+           graphdb:ruleset "rdfsplus-optimized" ;
+           graphdb:enable-context-index "true" ;
+           graphdb:enablePredicateList "true" ;
+           graphdb:in-memory-literal-properties "true" ;
+       ]
+   ] .

@@ -1,0 +1,106 @@
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix tmf:  <http://vocab.nfmust.ie/tmf-service-core#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:   <http://vocab.nfmust.ie/tmf-service-core/shapes#> .
+
+# ===========================================================================
+# Shapes are applied to the converted RDF of a single instance, in isolation,
+# BEFORE it is written to GraphDB. They enforce structural correctness and the
+# business rules that OWL (open-world) cannot reject.
+#
+# Note on cross-repository targets: the converter emits a typed stub for every
+# relationship target (e.g. the ConcreteCFSS behind `exposes`, the GenericCFSS
+# behind `specializes`). That is why `sh:class` checks below succeed even
+# though the *full* target lives in another repository — only its type matters
+# at validation time. Existence of the target is checked separately by the
+# cross-repository ASK validator.
+# ===========================================================================
+
+# --- ServiceCatalog --------------------------------------------------------
+ex:ServiceCatalogShape a sh:NodeShape ;
+    sh:targetClass tmf:ServiceCatalog ;
+    sh:property [ sh:path tmf:id   ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:message "ServiceCatalog: 'id' is mandatory." ] ;
+    sh:property [ sh:path tmf:name ; sh:minCount 1 ;
+                  sh:message "ServiceCatalog: 'name' is mandatory." ] ;
+    sh:property [ sh:path tmf:organizedInto ; sh:class tmf:Category ;
+                  sh:message "ServiceCatalog: 'organizedInto' must target Categories." ] .
+
+# --- Category --------------------------------------------------------------
+ex:CategoryShape a sh:NodeShape ;
+    sh:targetClass tmf:Category ;
+    sh:property [ sh:path tmf:id   ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:message "Category: 'id' is mandatory." ] ;
+    sh:property [ sh:path tmf:name ; sh:minCount 1 ;
+                  sh:message "Category: 'name' is mandatory." ] ;
+    sh:property [ sh:path tmf:contains ; sh:class tmf:ServiceCandidate ;
+                  sh:message "Category: 'contains' must target ServiceCandidates." ] ;
+    sh:property [ sh:path tmf:hasSubCategory ; sh:class tmf:Category ;
+                  sh:message "Category: 'hasSubCategory' must target Categories." ] .
+
+# --- ServiceCandidate ------------------------------------------------------
+# Core business rule: a candidate exposes EXACTLY ONE ConcreteCFSS.
+ex:ServiceCandidateShape a sh:NodeShape ;
+    sh:targetClass tmf:ServiceCandidate ;
+    sh:property [ sh:path tmf:id   ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:message "ServiceCandidate: 'id' is mandatory." ] ;
+    sh:property [ sh:path tmf:name ; sh:minCount 1 ;
+                  sh:message "ServiceCandidate: 'name' is mandatory." ] ;
+    sh:property [ sh:path tmf:exposes ;
+                  sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:class tmf:ConcreteCFSS ;
+                  sh:message "ServiceCandidate must expose exactly one ConcreteCFSS." ] ;
+    sh:property [ sh:path tmf:hasCategory ; sh:minCount 1 ;
+                  sh:class tmf:Category ;
+                  sh:message "ServiceCandidate must be classified in at least one Category." ] .
+
+# --- ConcreteCFSS ----------------------------------------------------------
+# A concrete CFSS MAY specialize a GenericCFSS, but it is not required to.
+# (Bulk ingestion from external catalogues such as OpenSlice produces concrete
+# specs that often carry no `specializes` relationship, or a
+# serviceSpecRelationship that does not include one. Such documents are
+# accepted as-is.) If a `specializes` relationship IS present, its target must
+# still be a GenericCFSS — that integrity check is kept; only the mandatory
+# presence (sh:minCount) is removed.
+ex:ConcreteCFSSShape a sh:NodeShape ;
+    sh:targetClass tmf:ConcreteCFSS ;
+    sh:property [ sh:path tmf:id   ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:message "ConcreteCFSS: 'id' is mandatory." ] ;
+    sh:property [ sh:path tmf:name ; sh:minCount 1 ;
+                  sh:message "ConcreteCFSS: 'name' is mandatory." ] ;
+    sh:property [ sh:path tmf:isBundle ; sh:datatype xsd:boolean ; sh:maxCount 1 ] ;
+    sh:property [ sh:path tmf:specializes ;
+                  sh:class tmf:GenericCFSS ;
+                  sh:message "If a ConcreteCFSS specializes something, it must be a GenericCFSS." ] .
+
+# --- GenericCFSS -----------------------------------------------------------
+# A generic CFSS is the base: it must NOT specialize anything.
+ex:GenericCFSSShape a sh:NodeShape ;
+    sh:targetClass tmf:GenericCFSS ;
+    sh:property [ sh:path tmf:id   ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:message "GenericCFSS: 'id' is mandatory." ] ;
+    sh:property [ sh:path tmf:name ; sh:minCount 1 ;
+                  sh:message "GenericCFSS: 'name' is mandatory." ] ;
+    sh:property [ sh:path tmf:specializes ; sh:maxCount 0 ;
+                  sh:message "A GenericCFSS is a base spec and cannot specialize another." ] .
+
+# --- RFSS ------------------------------------------------------------------
+ex:RFSShape a sh:NodeShape ;
+    sh:targetClass tmf:RFS ;
+    sh:property [ sh:path tmf:id   ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:message "RFSS: 'id' is mandatory." ] ;
+    sh:property [ sh:path tmf:name ; sh:minCount 1 ;
+                  sh:message "RFSS: 'name' is mandatory." ] .
+
+# --- CharacteristicSpecification ------------------------------------------
+ex:CharacteristicShape a sh:NodeShape ;
+    sh:targetClass tmf:CharacteristicSpecification ;
+    sh:property [ sh:path tmf:name ; sh:minCount 1 ;
+                  sh:message "Characteristic: 'name' is mandatory." ] ;
+    sh:property [ sh:path tmf:configurable ; sh:datatype xsd:boolean ; sh:maxCount 1 ] .
+
+# --- ServiceSpecCharacteristicValue ---------------------------------------
+ex:CharacteristicValueShape a sh:NodeShape ;
+    sh:targetClass tmf:ServiceSpecCharacteristicValue ;
+    sh:property [ sh:path tmf:valueFrom ; sh:datatype xsd:decimal ; sh:maxCount 1 ] ;
+    sh:property [ sh:path tmf:valueTo   ; sh:datatype xsd:decimal ; sh:maxCount 1 ] .

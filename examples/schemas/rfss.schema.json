@@ -1,0 +1,28 @@
+{
+  "id": "String",
+  "href": "String",
+  "name": "String",
+  "description": "String",
+  "version": "1.0.0",
+  "isBundle": false,
+  "@type": "ResourceFacingServiceSpecification",
+  "lifecycleStatus": "String",
+  "lastUpdate": "XXXX-XX-XXTXX:XX:XXZ",
+  "attachment": [],
+  "relatedParty": [],
+  "resourceSpecification": [],
+  "serviceLevelSpecification": [],
+  "serviceSpecCharacteristic": [],
+  "serviceSpecRelationship": [
+    {
+      "relationshipType": "dependsOn",
+      "role": "requires",
+      "serviceSpec": {
+        "id": "String",
+        "name": "String",
+        "@referredType": "ResourceFacingServiceSpecification"
+      }
+    }
+  ],
+  "targetServiceSchema": null
+}

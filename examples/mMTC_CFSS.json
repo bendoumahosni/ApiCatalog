@@ -1,0 +1,2655 @@
+{	"id":"7658",
+  "name": "mMTC_CFSS",
+  "description": "Generic configurable GST for massive Machine Type Communications (mMTC / MIoT) slices. Based on GSMA NG.116 v10.0. Providers can configure each attribute within the allowed ranges to describe their specific mMTC deployment.",
+  "version": "1.0.0",
+  "isBundle": false,
+	"@type": "CustomerFacingServiceSpecification",
+  "attachment": [],
+  "relatedParty": [],
+  "resourceSpecification": [],
+  "serviceLevelSpecification": [],
+  "serviceSpecCharacteristic": [
+    {
+      "name": "Availability",
+      "configurable": true,
+      "description": "(Communication service) availability: percentage value of the amount of time the end-to-end communication service is delivered according to an agreed QoS. For mMTC, moderate-to-high availability is typical; devices tolerate occasional disconnections.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "FLOAT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "percent",
+          "valueFrom": 90,
+          "valueTo": 95,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": "Medium",
+            "alias": "Standard mMTC availability - non-critical IoT sensors"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": "openClosed",
+          "regex": null,
+          "unitOfMeasure": "percent",
+          "valueFrom": 95,
+          "valueTo": 99.999,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": "High",
+            "alias": "High availability - smart metering, industrial IoT"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": "open",
+          "regex": null,
+          "unitOfMeasure": "percent",
+          "valueFrom": 99.999,
+          "valueTo": 100,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": "Very high",
+            "alias": "Very high availability - smart grid, critical infrastructure"
+          }
+        }
+      ]
+    },
+    {
+      "name": "AreaOfService",
+      "configurable": true,
+      "description": "Area where UEs can access the mMTC network slice. mMTC deployments are typically national, regional (industrial zones, urban areas) or campus-level.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": -1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Operational",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Scalability Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "ISO 3166-1 Alpha-2 country codes",
+            "alias": "Two-letter country code"
+          }
+        }
+      ]
+    },
+    {
+      "name": "AreaOfService.RegionSpecification",
+      "configurable": true,
+      "description": "Specifies whether the mMTC service covers a full country or specific regions (e.g. industrial park, urban district, campus).",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": -1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Operational",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Scalability Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Full country",
+            "alias": "Full country coverage"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "List of regions",
+            "alias": "Partial coverage - industrial zones, smart city districts, campus"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DelayTolerance",
+      "configurable": true,
+      "description": "Core mMTC characteristic: devices tolerate service delivery delays (batch transmission, off-peak scheduling). Most mMTC use cases are delay-tolerant by nature. Not including this attribute equals Not supported.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Not supported",
+            "alias": "Delay tolerance not supported - real-time mMTC only"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Supported",
+            "alias": "Delay tolerance supported - typical mMTC (sensors, metering)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "UEDensity",
+      "configurable": true,
+      "description": "Maximum number of connected/accessible devices per km2. This is the defining KPI of mMTC. 3GPP TS 22.261 defines the mMTC target as up to 1,000,000 devices/km2.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Scalability Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "Number per km2",
+          "valueFrom": 10000,
+          "valueTo": 99999,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "10000",
+            "alias": "Industry 4.0 / Campus IoT"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "Number per km2",
+          "valueFrom": 100000,
+          "valueTo": 1000000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "1000000",
+            "alias": "Massive IoT - smart city, smart metering (3GPP TS 22.261 target)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "MaximumNumberOfUEs.MaximumNumberOfUEs",
+      "configurable": true,
+      "description": "Maximum number of UEs that can use the network slice simultaneously. For mMTC this can reach hundreds of millions of devices across the deployment area.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Scalability Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": 100000,
+          "valueTo": 1000000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "100000",
+            "alias": "Campus / industrial IoT deployment"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": 1000000,
+          "valueTo": 1000000000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "1000000000",
+            "alias": "National-scale mMTC - smart metering, smart city"
+          }
+        }
+      ]
+    },
+    {
+      "name": "MaximumNumberOfUEs.EPSCountingRequired",
+      "configurable": true,
+      "description": "Specifies if EPS (4G) UE counting must be included. Relevant when mMTC slice supports NB-IoT devices that may connect via LTE/EPS.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Scalability Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "No",
+            "alias": "EPS UE counting not required"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Yes",
+            "alias": "EPS UE counting required - NB-IoT/eMTC via 4G"
+          }
+        }
+      ]
+    },
+    {
+      "name": "MaximumNumberOfUEs.RoamingUEsCountingRequired",
+      "configurable": true,
+      "description": "Specifies if roaming UEs are included in the device count. Relevant for cross-border IoT asset tracking use cases.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Scalability Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "No",
+            "alias": "Roaming UEs not counted"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Yes",
+            "alias": "Roaming UEs counted - cross-border asset tracking"
+          }
+        }
+      ]
+    },
+    {
+      "name": "MaximumNumberOfPDUSessions.MaximumNumberOfPDUSessions",
+      "configurable": true,
+      "description": "Maximum concurrent PDU sessions. In mMTC, many devices are dormant and only a fraction have active sessions simultaneously (typical activation rate 1-10%).",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Scalability Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "PDU sessions",
+          "valueFrom": 1000,
+          "valueTo": 100000000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "100000",
+            "alias": "Typical mMTC concurrent sessions (1-10% activation rate)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "MaximumNumberOfPDUSessions.EPSCountingRequired",
+      "configurable": true,
+      "description": "Whether EPS PDN connections are included in PDU session count. Relevant for NB-IoT/eMTC devices connecting via EPS.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Scalability Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "No",
+            "alias": "EPS counting not required"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Yes",
+            "alias": "EPS counting required"
+          }
+        }
+      ]
+    },
+    {
+      "name": "MaximumNumberOfPDUSessions.LBOPDUSessionsCountingRequired",
+      "configurable": true,
+      "description": "Whether Local Breakout PDU sessions are counted.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Scalability Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "No",
+            "alias": "LBO sessions not counted"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Yes",
+            "alias": "LBO sessions counted"
+          }
+        }
+      ]
+    },
+    {
+      "name": "NBIoTSupport",
+      "configurable": true,
+      "description": "Specifies if NB-IoT (Narrowband IoT) is supported in the RAN. NB-IoT is a key 3GPP radio access technology for mMTC, providing extended coverage, low power consumption and support for massive device density. Applies to 3GPP access type only.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Not supported",
+            "alias": "NB-IoT not supported - eMTC or NR RedCap only"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Supported",
+            "alias": "NB-IoT supported - massive IoT, smart metering, agriculture"
+          }
+        }
+      ]
+    },
+    {
+      "name": "EnergyEfficiency",
+      "configurable": true,
+      "description": "Describes whether the slice supports energy efficiency KPI monitoring. Critical for mMTC where battery-powered devices must operate for years without recharge (3GPP TS 22.261 target: 10+ years battery life).",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Not Supported",
+            "alias": "Energy efficiency KPI not monitored"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Supported",
+            "alias": "Energy efficiency KPI supported - battery life monitoring"
+          }
+        }
+      ]
+    },
+    {
+      "name": "MaximumSupportedPacketSize",
+      "configurable": true,
+      "description": "Maximum packet size supported. mMTC devices typically send very small payloads (sensor readings, telemetry). Packet size directly impacts NB-IoT/eMTC transport efficiency.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "Bytes",
+          "valueFrom": 40,
+          "valueTo": 200,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "40",
+            "alias": "IoT small packet - sensor telemetry, NB-IoT payload"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "Bytes",
+          "valueFrom": 200,
+          "valueTo": 1500,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "1500",
+            "alias": "Standard MTU - firmware OTA update, image upload"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeterministicCommunication.Availability",
+      "configurable": true,
+      "description": "Defines if the slice supports deterministic communication for periodic mMTC traffic. Key for smart metering (fixed reporting intervals), industrial sensors, and precision agriculture. Applies to 3GPP access only.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Not supported",
+            "alias": "Aperiodic/event-driven mMTC traffic only"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Supported",
+            "alias": "Periodic traffic supported - metering, environmental monitoring"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeterministicCommunication.Periodicity",
+      "configurable": true,
+      "description": "List of periodicities supported for mMTC periodic traffic. mMTC reporting intervals range from seconds (industrial sensors) to hours (utility metering). Must be present when DeterministicCommunication.Availability is Supported.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": -1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "FLOAT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "seconds",
+          "valueFrom": 1,
+          "valueTo": 60,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": "1",
+            "alias": "1s–60s - industrial sensor, environmental monitoring"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "seconds",
+          "valueFrom": 60,
+          "valueTo": 3600,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": "900",
+            "alias": "1min–1h - smart metering, agriculture telemetry"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "seconds",
+          "valueFrom": 3600,
+          "valueTo": 86400,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": "86400",
+            "alias": "1h–24h - daily utility meter read"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Synchronicity.Availability",
+      "configurable": true,
+      "description": "Synchronicity between BS and UE, or between UEs. Relevant for coordinated mMTC transmissions (synchronized sensor networks, smart grid PMU). Applies to 3GPP access only.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Not supported",
+            "alias": "No synchronicity - asynchronous IoT devices"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Between BS and UE",
+            "alias": "BS-to-UE sync - synchronized metering, smart grid PMU"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Between BS and UE & UE and UE",
+            "alias": "Full sync - coordinated sensor networks"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Synchronicity.Accuracy",
+      "configurable": true,
+      "description": "Accuracy of synchronicity. For mMTC, typical accuracy ranges from 1 microsecond (precision grid) to 1 millisecond (standard IoT coordination). Must be present when Synchronicity.Availability is not 'Not supported'.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "FLOAT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "second",
+          "valueFrom": 1e-06,
+          "valueTo": 0.001,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": "0.000001",
+            "alias": "1µs–1ms - smart grid PMU to sensor coordination"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SupportForNonIPTraffic",
+      "configurable": true,
+      "description": "Non-IP session support (Ethernet, unstructured data). Many mMTC devices use non-IP protocols (CoAP over UDP, MQTT, proprietary sensor protocols) or require Ethernet PDU sessions for industrial IoT. Not including this equals Not supported.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Not supported",
+            "alias": "IP only - standard IP-based IoT protocols"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Supported",
+            "alias": "Non-IP Ethernet sessions supported - industrial IoT, Modbus, proprietary sensors"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SliceQualityOfService.5QI",
+      "configurable": true,
+      "description": "5QI scalar referencing 5G QoS characteristics. For mMTC, relevant standardised 5QIs per 3GPP TS 23.501 Table 5.7.4-1 are 5QI=6 (Non-GBR, PDB=300ms, IoT) and 5QI=9 (default Non-GBR). Providers may also use operator-specific 5QI values.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": -1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Standardised 5QI values per Table 5.7.4-1 of 3GPP TS 23.501 or Operator-specific 5QI values per Table 9.11.4.12.1 of 3GPP TS 24.501",
+            "alias": "mMTC typical: 5QI=6 (300ms PDB) or 5QI=9 (default Non-GBR)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SliceQualityOfService.ResourceType",
+      "configurable": true,
+      "description": "Resource type for mMTC QoS flows. mMTC is predominantly Non-GBR (best effort, no guaranteed rate). GBR may apply to critical mMTC (e.g. smart grid control).",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Non-GBR",
+            "alias": "Non-Guaranteed Bit Rate - typical mMTC sensors, metering"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "GBR",
+            "alias": "Guaranteed Bit Rate - critical mMTC (smart grid control)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SliceQualityOfService.PriorityLevel",
+      "configurable": true,
+      "description": "Priority in scheduling resources. mMTC is typically low priority (high number = low priority). Range 1 (highest) to 127 (lowest) per 3GPP TS 23.501.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": 1,
+          "valueTo": 20,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "10",
+            "alias": "High priority mMTC - critical infrastructure, smart grid"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": 60,
+          "valueTo": 127,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "90",
+            "alias": "Low priority mMTC - standard sensors, metering, agriculture"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SliceQualityOfService.PacketDelayBudget",
+      "configurable": true,
+      "description": "Upper bound for packet delay between UE and UPF. mMTC is delay-tolerant: typical PDB ranges from 300ms (standard IoT) to 10s (batch/delay-tolerant). Per 3GPP TS 23.501.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "FLOAT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "seconds",
+          "valueFrom": 0.3,
+          "valueTo": 10,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": "0.3",
+            "alias": "300ms–10s - typical mMTC PDB range (3GPP TS 23.501 5QI=6: 300ms)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SliceQualityOfService.PacketErrorRate",
+      "configurable": true,
+      "description": "Upper bound for PDU error rate. mMTC typically accepts higher PER than URLLC. Per 3GPP TS 23.501, standard Non-GBR IoT PER is 10^-6 to 10^-4.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "FLOAT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": 1e-06,
+          "valueTo": 0.0001,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": "0.000001",
+            "alias": "10^-6 to 10^-4 - standard mMTC PER per 3GPP TS 23.501"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SliceQualityOfService.GuaranteedFlowBitRateDownlink",
+      "configurable": true,
+      "description": "GFBR Downlink per GBR QoS flow. For mMTC GBR flows (critical IoT), typical values are very low (1–100 kbps per device for control/actuation).",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 0,
+          "valueTo": 100,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "0 = Non-GBR (default); up to 100 kbps for critical mMTC GBR flows"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SliceQualityOfService.GuaranteedFlowBitRateUplink",
+      "configurable": true,
+      "description": "GFBR Uplink per GBR QoS flow. mMTC uplink is dominant (sensor data upload). GBR applies to critical sensors only.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 0,
+          "valueTo": 100,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "0 = Non-GBR (default); up to 100 kbps for critical uplink sensors"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SliceQualityOfService.MaximumFlowBitRateDownlink",
+      "configurable": true,
+      "description": "MFBR Downlink per QoS flow. For mMTC DL (actuation/configuration), typical max is 1–250 kbps per NB-IoT/eMTC device.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 1,
+          "valueTo": 1000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "250",
+            "alias": "1–1000 kbps - NB-IoT: ~250 kbps DL max, eMTC: ~1 Mbps DL max"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SliceQualityOfService.MaximumFlowBitRateUplink",
+      "configurable": true,
+      "description": "MFBR Uplink per QoS flow. mMTC UL (sensor data) is the primary traffic direction. NB-IoT max UL ~250 kbps, eMTC ~1 Mbps.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 1,
+          "valueTo": 1000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "250",
+            "alias": "1–1000 kbps - NB-IoT: ~250 kbps UL max, eMTC: ~1 Mbps UL max"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SliceQualityOfService.MaximumPacketLossRate",
+      "configurable": true,
+      "description": "Maximum tolerable packet loss rate for mMTC QoS flows. mMTC typically accepts higher loss than URLLC, relying on application-layer retransmission.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "FLOAT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": 0,
+          "valueTo": 0.001,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "0 to 10^-3 - mMTC acceptable loss (retransmission at app layer)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DownlinkThroughputPerNetworkSlice.GuaranteedDownlinkThroughputQuota",
+      "configurable": true,
+      "description": "Guaranteed aggregate DL throughput for the slice. mMTC DL is typically low (devices receive small config/actuation payloads). 0 = best effort.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Scalability Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 0,
+          "valueTo": 1000000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "0 (best effort) to 1 Gbps aggregate for massive device DL"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DownlinkThroughputPerNetworkSlice.MaximumDownlinkThroughput",
+      "configurable": true,
+      "description": "Maximum aggregate DL throughput for all mMTC devices combined. Sized by device count × per-device DL rate.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Scalability Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 1000,
+          "valueTo": 10000000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "100000",
+            "alias": "1 Mbps to 10 Gbps aggregate DL - scales with device population"
+          }
+        }
+      ]
+    },
+    {
+      "name": "UplinkThroughputPerNetworkSlice.GuaranteedUplinkThroughputQuota",
+      "configurable": true,
+      "description": "Guaranteed aggregate UL throughput. UL is the dominant direction in mMTC (sensor data upload). 0 = best effort.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Scalability Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 0,
+          "valueTo": 1000000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "0 (best effort) to 1 Gbps aggregate UL for massive device reporting"
+          }
+        }
+      ]
+    },
+    {
+      "name": "UplinkThroughputPerNetworkSlice.MaximumUplinkThroughput",
+      "configurable": true,
+      "description": "Maximum aggregate UL throughput for all mMTC devices. UL is primary traffic in mMTC.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Scalability Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 1000,
+          "valueTo": 10000000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "100000",
+            "alias": "1 Mbps to 10 Gbps aggregate UL - scales with device population and reporting rate"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DownlinkMaximumThroughputPerUE.MaximumDownlinkThroughputPerUEValue",
+      "configurable": true,
+      "description": "Maximum DL data rate per individual mMTC device. NB-IoT peak DL: ~250 kbps. eMTC peak DL: ~1 Mbps. Standard sensor devices: 1–10 kbps.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": -1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 1,
+          "valueTo": 250,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "10",
+            "alias": "1–250 kbps - NB-IoT range (sensor config, firmware delta OTA)"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 250,
+          "valueTo": 1000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "1000",
+            "alias": "250 kbps–1 Mbps - eMTC range (larger OTA, image upload)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DownlinkMaximumThroughputPerUE.ServiceCategory",
+      "configurable": true,
+      "description": "Optional service category label for per-UE DL throughput differentiation within the mMTC slice.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": -1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Any text identifying the Service Category",
+            "alias": "Service category label"
+          }
+        }
+      ]
+    },
+    {
+      "name": "UplinkMaximumThroughputPerUE.MaximumUplinkThroughputPerUEValue",
+      "configurable": true,
+      "description": "Maximum UL data rate per mMTC device. This is the primary KPI for sensor data upload. NB-IoT peak UL: ~250 kbps. eMTC peak UL: ~1 Mbps. Typical mMTC sensor: 1–10 kbps.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": -1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "INTEGER",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Performance",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 1,
+          "valueTo": 250,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "10",
+            "alias": "1–250 kbps - NB-IoT range (typical sensor telemetry: 1–10 kbps)"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": "closed",
+          "regex": null,
+          "unitOfMeasure": "kbps",
+          "valueFrom": 250,
+          "valueTo": 1000,
+          "valueType": "INTEGER",
+          "validFor": null,
+          "value": {
+            "value": "1000",
+            "alias": "250 kbps–1 Mbps - eMTC range (video surveillance IoT, asset tracking)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "UplinkMaximumThroughputPerUE.ServiceCategory",
+      "configurable": true,
+      "description": "Optional service category label for per-UE UL throughput differentiation.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": -1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Any text identifying the Service Category",
+            "alias": "Service category label"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SessionAndServiceContinuitySupport",
+      "configurable": true,
+      "description": "PDU session continuity mode. mMTC devices may be mobile (asset tracking) or stationary. SSC mode 1 (IP preserved) suits stationary devices; SSC mode 2/3 suits mobile IoT that tolerates reconnection.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "SSC mode 1",
+            "alias": "IP address preserved - stationary sensors, smart meters"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "SSC mode 2",
+            "alias": "PDU session may be released - mobile IoT, asset tracking"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "SSC mode 3",
+            "alias": "New anchor before old released - mobility-tolerant IoT"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SupportedDeviceVelocity",
+      "configurable": true,
+      "description": "Maximum UE speed at which QoS and handover are maintained. mMTC covers stationary (smart meters, fixed sensors) to mobile (vehicle tracking, logistics). High-speed vehicular not typical for mMTC.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "FLOAT",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "KPI",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "km/h",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": "0",
+            "alias": "Stationary - smart meters, fixed environmental sensors"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "km/h",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": "10",
+            "alias": "Pedestrian - wearable IoT, healthcare monitoring"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "km/h",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "FLOAT",
+          "validFor": null,
+          "value": {
+            "value": "120",
+            "alias": "Vehicular - logistics tracking, fleet management, connected vehicles"
+          }
+        }
+      ]
+    },
+    {
+      "name": "RadioSpectrum",
+      "configurable": true,
+      "description": "Radio spectrum bands for the mMTC slice. NB-IoT and eMTC operate in sub-GHz and low-band spectrum for extended coverage and building penetration (key mMTC requirement). Applies to 3GPP access type only.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": -1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "NR operating band identifiers per 3GPP TS 38.101-1",
+            "alias": "mMTC relevant: n1(2100MHz), n3(1800MHz), n8(900MHz), n28(700MHz) for coverage; n77/n78 for dense industrial"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PerformanceMonitoring.Availability",
+      "configurable": true,
+      "description": "KQI/KPI monitoring capabilities available for the mMTC slice. Providers select which metrics to monitor.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": -1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Operational",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Service Request Success Rate",
+            "alias": "SRSR monitoring - device attach/detach success rate"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PerformanceMonitoring.MonitoringSampleFrequency",
+      "configurable": true,
+      "description": "Frequency at which KQIs/KPIs are sampled. mMTC monitoring can be less frequent than eMBB given delay-tolerant nature.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Operational",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Per second",
+            "alias": "1Hz - real-time monitoring for critical mMTC"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Per minute",
+            "alias": "Per minute - standard mMTC monitoring"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Per hour",
+            "alias": "Per hour - lightweight monitoring for large-scale mMTC deployments"
+          }
+        }
+      ]
+    },
+    {
+      "name": "MonitoringAndAnalytics",
+      "configurable": true,
+      "description": "Root cause analysis and proactive monitoring capability. Useful for managing massive device fleets in mMTC deployments.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Operational",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Not supported",
+            "alias": "No analytics"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Passive investigation",
+            "alias": "NSC informed about root causes - fleet anomaly reporting"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Active investigation",
+            "alias": "NSC can investigate proactively - predictive maintenance IoT"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SupportedDataNetwork.SupportedDataNetworkList",
+      "configurable": true,
+      "description": "Data networks accessible by the mMTC slice (e.g. IoT platform DNN, private industrial network, Internet).",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": -1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Text identification of one data network or a list of data networks",
+            "alias": "e.g. IoT-Platform DNN, Industrial-LAN, Internet"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SupportedDataNetwork.ServiceCategory",
+      "configurable": true,
+      "description": "Service category associated with a supported data network in the mMTC slice.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": -1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Any text identifying the service category",
+            "alias": "Service category label"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DataNetworkAccess.DataAccessPerDataNetwork",
+      "configurable": true,
+      "description": "How the mMTC slice handles user data for each data network. Industrial IoT typically uses private network termination; consumer IoT uses direct internet access.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": -1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Direct internet access",
+            "alias": "Internet breakout - consumer IoT, cloud-connected sensors"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Termination in the private network",
+            "alias": "VPN/tunnel to private network - industrial IoT, smart grid, enterprise"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Local traffic (no internet access)",
+            "alias": "Fully local - campus IoT, closed factory network"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DataNetworkAccess.TunnellingMechanism",
+      "configurable": true,
+      "description": "Tunnelling mechanism for private network connectivity. Relevant for industrial mMTC connecting to on-premise IoT platforms.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "L2TP Tunnel",
+            "alias": "Layer 2 Tunnelling Protocol"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "GRE Tunnel",
+            "alias": "Generic Routing Encapsulation"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "VPN Tunnel",
+            "alias": "Virtual Private Network - typical for industrial IoT"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Label based routing",
+            "alias": "MPLS-style label routing"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Other",
+            "alias": "Operator-defined tunnelling"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DataNetworkAccess.LBOAllowed",
+      "configurable": true,
+      "description": "Whether Local Breakout is allowed while roaming. Relevant for cross-border asset tracking mMTC use cases.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Yes",
+            "alias": "LBO allowed - cross-border IoT asset tracking"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "No",
+            "alias": "LBO not allowed - domestic deployments only"
+          }
+        }
+      ]
+    },
+    {
+      "name": "NSSAARequired",
+      "configurable": true,
+      "description": "Network Slice-Specific Authentication and Authorization. For mMTC, slice-level AAA is recommended when serving multiple enterprise tenants or sensitive IoT verticals (smart grid, healthcare).",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 1,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Not supported",
+            "alias": "No slice-specific AAA - basic IoT deployment"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Supported",
+            "alias": "Slice-specific AAA - enterprise IoT, smart grid, healthcare"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SimultaneousUseOfNetworkSlice.SimultaneousUseClass",
+      "configurable": true,
+      "description": "Defines whether the mMTC slice can be used simultaneously with other slices. mMTC devices typically use a dedicated slice and may not need simultaneous use.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Character Attribute",
+          "role": "tag",
+          "relationshipType": "tag"
+        },
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Can be used simultaneously with any network slice",
+            "alias": "No simultaneous use restriction"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Can be used simultaneously with any network slices with same SST value but different SD values",
+            "alias": "Same SST only"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Cannot be used simultaneously with any another network slice",
+            "alias": "Exclusive use - dedicated mMTC tenant"
+          }
+        },
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Operator defined class",
+            "alias": "Operator-specific rule"
+          }
+        }
+      ]
+    },
+    {
+      "name": "NetworkFunctionsOwnedByNSC",
+      "configurable": true,
+      "description": "List of network functions that the NSC (tenant/enterprise) owns and provides for this mMTC slice. Common in private IoT networks.",
+      "extensible": null,
+      "isUnique": false,
+      "maxCardinality": -1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Functional",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Any desired list of functions",
+            "alias": "e.g. UDM, AUSF, AF, IoT-NEF"
+          }
+        }
+      ]
+    },
+    {
+      "name": "UserManagementOpenness",
+      "configurable": true,
+      "description": "Capability for the NSC to manage device (UE) subscriptions and groups. Critical for enterprise mMTC deployments managing large device fleets.",
+      "extensible": null,
+      "isUnique": true,
+      "maxCardinality": 1,
+      "minCardinality": 0,
+      "regex": null,
+      "valueType": "STRING",
+      "serviceSpecCharRelationship": [
+        {
+          "name": "Operational",
+          "role": "tag",
+          "relationshipType": "tag"
+        }
+      ],
+      "serviceSpecCharacteristicValue": [
+        {
+          "isDefault": false,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Not supported",
+            "alias": "NSC cannot manage devices"
+          }
+        },
+        {
+          "isDefault": true,
+          "rangeInterval": null,
+          "regex": null,
+          "unitOfMeasure": "NA",
+          "valueFrom": null,
+          "valueTo": null,
+          "valueType": "STRING",
+          "validFor": null,
+          "value": {
+            "value": "Supported",
+            "alias": "NSC can add/modify/delete device subscriptions - fleet management"
+          }
+        }
+      ]
+    }
+  ],
+  "serviceSpecRelationship": [],
+  "targetServiceSchema": null
+}

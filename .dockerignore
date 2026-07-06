@@ -1,0 +1,33 @@
+# Keep the build context (and final image) minimal and free of secrets.
+.git
+.gitignore
+.env
+*.env
+!.env.example
+
+# Python caches / artefacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtualenvs (the image builds its own in /opt/venv)
+.venv/
+venv/
+env/
+
+# Tests are not needed in the runtime image
+tests/
+
+# Local tooling / editor
+.vscode/
+.idea/
+*.md
+!README.md
+
+# Compose files are not needed inside the image
+docker-compose*.yml

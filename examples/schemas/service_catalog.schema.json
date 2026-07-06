@@ -1,0 +1,29 @@
+{
+    "id": "String",
+    "href": "String",
+    "name": "String",
+    "description": "String",
+    "version": "1.0",
+    "validFor": {
+        "startDateTime": "2026-05-01T00:00:00Z",
+        "endDateTime": "2028-12-31T23:59:59Z"
+    },
+    "lastUpdate": "2026-05-07T10:00:00Z",
+    "lifecycleStatus": "String",
+    "relatedParty": [
+    ],
+    "category": [
+        {
+            "href": "String",
+            "id": "String",
+            "name": "String",
+            "@referredType": "ServiceCategory",
+            "@type": "ServiceCategoryRef",
+            "@schemaLocation": "String",
+            "@baseType": ""
+        }
+    ],
+    "@type": "ServiceCatalog",
+    "@schemaLocation": "String",
+    "@baseType": "Catalog"
+}
